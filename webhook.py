@@ -26,7 +26,7 @@ def makeResponse(req):
 	param = result.get("parameters")
 	city = param.get("geo-city")
 	date = param.get("date")
-	r = requests('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b6907d289e10d714a6e88b30761fae22')
+	r = requests('https://samples.openweathermap.org/data/2.5/forecast?q='+city+',us&appid=b6907d289e10d714a6e88b30761fae22')
 	json_object = r.json()
 	weather = json_object['list']
 	for i in len(weather):
@@ -34,7 +34,6 @@ def makeResponse(req):
 			condition = weather[i]['weather'][0]['description']
 			break
 
-	
 
 	speech = "The forecast for "+city+" for "+date+" is "+condition
 	return{
